@@ -15,6 +15,9 @@ router.post('/', async (req, res) => {
 // Get all shops
 router.get('/', async (req, res) => {
   const shops = await Shop.find();
+
+  console.log(shops)
+
   return res.json(shops);
 });
 

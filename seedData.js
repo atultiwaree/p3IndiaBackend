@@ -54,8 +54,8 @@ async function seedData() {
   const users = await User.insertMany([
     {
       username: "kirana_store_01",
-      email: "store01@example.com",
-      password: "123456",
+      email: "hello@atul.com",
+      password: "Qwerty@1234",
       role: "retailer",
     },
     {
