@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 })
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.PROD_URI)
   .then(() => {
     app.listen(3000, () => console.log("Server running on port 5000"));
   })
