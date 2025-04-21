@@ -94,16 +94,16 @@ router.get('/:distributorId/products', async (req, res) => {
   }
 });
 
-router.delete('/:distributorId', async (req, res) => {
+router.delete('/:_id', async (req, res) => {
   try {
-    const distributor = await Distributor.findOneAndDelete({ distributorId: req.params.distributorId });
+    const distributor = await Distributor.findOneAndDelete({ distributorId: req.params._id });
 
     if (!distributor) {
       return res.status(404).json({ message: 'Distributor not found' });
     }
 
     // Deleting related products
-    await Product.deleteMany({ distributorId: req.params.distributorId });
+    await Product.deleteMany({ distributorId: req.params._id });
 
     // Send success response
     return res.status(200).json({
