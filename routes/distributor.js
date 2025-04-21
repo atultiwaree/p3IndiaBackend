@@ -127,16 +127,23 @@ router.delete('/:distributorId', async (req, res) => {
 
 router.put('/:distributorId', async (req, res) => {
   try {
-    const updatedDistributor = await Distributor.findByIdAndUpdate(
-      req.params.distributorId,
+    const updatedDistributor = await Distributor.findOneAndUpdate(
+      { distributorId: req.params.distributorId }, // <-- match by distributorId
       req.body,
       { new: true }
     );
+
+    if (!updatedDistributor) {
+      return res.status(404).json({ message: 'Distributor not found' });
+    }
+
     res.json(updatedDistributor);
   } catch (error) {
+    console.error('Error updating distributor:', error);
     res.status(500).json({ message: 'Error updating distributor', error });
   }
 });
+
 
 
 module.exports = router;
