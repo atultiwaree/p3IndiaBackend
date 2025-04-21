@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 });
 
 // GET distributor by distributorId
-router.get('/:_id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const distributor = await Distributor.findOne({ distributorId: req.params._id });
     
@@ -108,7 +108,7 @@ router.get('/:distributorId/products', async (req, res) => {
   }
 });
 
-router.delete('/:_id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const distributor = await Distributor.findOneAndDelete({ distributorId: req.params._id });
 
@@ -129,7 +129,7 @@ router.delete('/:_id', async (req, res) => {
   }
 });
 
-router.put('/:_id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updatedDistributor = await Distributor.findByIdAndUpdate(
       req.params._id,
