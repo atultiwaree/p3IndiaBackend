@@ -13,7 +13,7 @@ const router = express.Router();
 // GET all distributors (name + ID)
 router.get("/", async (req, res) => {
   try {
-    const distributors = await Distributor.find({}, { name: 1, distributorId: 1, products: 1 });
+    const distributors = await Distributor.find({}, { name: 1, distributorId: 1, products: 30 });
     return res.json(distributors);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch distributors" });
