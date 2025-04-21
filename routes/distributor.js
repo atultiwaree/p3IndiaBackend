@@ -115,10 +115,10 @@ router.delete('/:distributorId', async (req, res) => {
   }
 });
 
-router.put('/:distributorId', async (req, res) => {
+router.put('/:_id', async (req, res) => {
   try {
     const updatedDistributor = await Distributor.findByIdAndUpdate(
-      req.params.distributorId,
+      req.params._id,
       req.body,
       { new: true }
     );
