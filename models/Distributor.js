@@ -7,7 +7,8 @@ const distributorSchema = new mongoose.Schema({
     {
       code: String,
       name: String,
-      price: Number
+      price: Number,
+      quantity: Number,
     }
   ]
 });
