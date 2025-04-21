@@ -24,6 +24,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET distributor by distributorId
+router.get('/:distributorId', async (req, res) => {
+  try {
+    const distributor = await Distributor.findOne({ distributorId: req.params.distributorId });
+    
+    if (!distributor) {
+      return res.status(404).json({ message: 'Distributor not found' });
+    }
+
+    res.json(distributor);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching distributor', error });
+  }
+});
 
 // GET distributor by name to return its ID
 router.get("/by-name/:name", async (req, res) => {
