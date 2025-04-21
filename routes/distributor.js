@@ -102,13 +102,19 @@ router.delete('/:distributorId', async (req, res) => {
       return res.status(404).json({ message: 'Distributor not found' });
     }
 
+    // Deleting related products
     await Product.deleteMany({ distributorId: req.params.distributorId });
 
-    res.status(200).json({ message: 'Distributor and related products deleted successfully' });
+    // Send success response
+    return res.status(200).json({
+      message: 'Distributor and related products deleted successfully',
+      data: distributor, // Send deleted distributor's info for frontend use (optional)
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Failed to delete distributor', error });
+    return res.status(500).json({ message: 'Failed to delete distributor', error });
   }
 });
+
 
 
 module.exports = router;
